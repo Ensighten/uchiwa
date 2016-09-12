@@ -50,5 +50,8 @@ func (d *Daemon) buildEvents() {
 
 		// detertermine if the client is acknowledged
 		m["client"].(map[string]interface{})["silenced"] = helpers.IsClientSilenced(clientName, dcName, d.Data.Silenced)
+
+		// determine if the check is silenced
+		m["silenced"], m["silenced_by"] = helpers.IsCheckSilenced(k, clientName, dcName, d.Data.Silenced)
 	}
 }
